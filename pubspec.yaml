@@ -1,8 +1,8 @@
 name: yahoofin
-description: A new Flutter package project.
+description: A flutter package that allows people to fetch stock data from yahoo finance api.
 version: 0.0.1
-author:
-homepage:
+author: sarvesh bhatnagar
+homepage: https://github.com/sarveshbhatnagar/yahoofin
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
