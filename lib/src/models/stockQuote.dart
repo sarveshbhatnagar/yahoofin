@@ -1,5 +1,24 @@
 import 'package:equatable/equatable.dart';
 
+/// Stock Quote contains several params including
+/// 1. mode that tells what mode it was initialized in
+/// 0 indicates price parameters was initialized
+/// 1 indicates change parameters was initialized
+/// 2 indicates that volume parameters was initialized and
+/// 3 indicates that all the values were initialized.
+///
+/// It contains [ticker], [mode] for meta data
+/// [currentPrice], [dayHigh], [dayLow] for price variables
+///
+/// [regularMarketChange], [fiftyTwoWeekLowChange], [fiftyTwoWeekHighChange],
+/// [twoHundredDayAverageChangePercent], [regularMarketChangePercent],
+/// [fiftyTwoWeekLowChangePercent], [fiftyTwoWeekHighChangePercent],
+/// [fiftyDayAverageChangePercent], [twoHundredDayAverageChangePercent],
+/// [regularMarketChangePercent] for change variables
+///
+/// and [regularMarketVolume], [averageDailyVolume3Month], [averageDailyVolume10Day]
+/// for volume variables.
+///
 class StockQuote extends Equatable {
   final String ticker;
 
