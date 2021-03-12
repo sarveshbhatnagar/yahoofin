@@ -39,7 +39,8 @@ class StockHistory {
   http.Response res;
   bool _isInitialized = false;
   final String ticker;
-  final String baseUrl = "https://query1.finance.yahoo.com/v8/finance/chart/";
+  // final String baseUrl = "https://query1.finance.yahoo.com/v8/finance/chart/";
+  final String baseUrl = "query1.finance.yahoo.com";
   final StockInterval interval;
   final StockRange range;
 
@@ -96,7 +97,11 @@ class StockHistory {
 
   Future _init() async {
     try {
-      res = await http.get(baseUrl + ticker);
+      final String apiStr = "/v8/finance/chart/$ticker";
+      res = await http.get(Uri.https(
+        baseUrl,
+        apiStr,
+      ));
       if (res.statusCode == 200) {
         _isInitialized = true;
       }

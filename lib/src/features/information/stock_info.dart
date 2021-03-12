@@ -7,8 +7,10 @@ import 'package:yahoofin/src/models/yahoo_exception.dart';
 class StockInfo {
   final String ticker;
   http.Response res;
-  final String baseUrl =
-      "https://query1.finance.yahoo.com/v7/finance/quote?symbols=";
+  final String baseUrl = "query1.finance.yahoo.com";
+  final String apiStr = "/v7/finance/quote";
+  // "https://query1.finance.yahoo.com/v7/finance/quote?symbols=";
+
   bool _isInitialized = false;
   StockInfo({this.ticker});
 
@@ -22,11 +24,15 @@ class StockInfo {
 
   Future _init() async {
     try {
-      res = await http.get(baseUrl + ticker);
+      var params = {
+        "symbols": ticker,
+      };
+      res = await http.get(Uri.https(baseUrl, apiStr, params));
       if (res.statusCode == 200) {
         _isInitialized = true;
       }
     } catch (e) {
+      print(e);
       throw YahooApiException(statusCode: 404, message: "$ticker not found");
     }
   }

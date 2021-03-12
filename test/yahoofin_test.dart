@@ -9,9 +9,9 @@ void main() async {
   final yfin = YahooFin();
   StockInfo nullinfo = yfin.getStockInfo(ticker: "null");
   StockInfo info = yfin.getStockInfo(ticker: "cciv");
-  StockHistory hist = yfin.getStockHistory(ticker: "msft");
-
-  hist.getHistory();
+  // TODO implement test for history
+  // StockHistory hist = yfin.getStockHistory(ticker: "msft");
+  // hist.getHistory();
   test("""Checks StockInfo Functions for their validity
    (YahooFin)(note: update test case for testing date)""", () async {
     StockQuote q = await yfin.getPrice(stockInfo: info);
