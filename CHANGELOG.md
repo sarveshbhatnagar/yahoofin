@@ -1,3 +1,8 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - 11th March, 2021
 
-* TODO: Describe initial release.
+- Single Stock Data Fetch
+
+## [0.0.2] - 12th March, 2021
+
+- Updated Documentation
+- Fixed bugs
