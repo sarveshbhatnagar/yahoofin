@@ -1,7 +1,5 @@
 // https://query1.finance.yahoo.com/v8/finance/chart/tsla?interval=1d&range=1mo
 
-import 'dart:convert';
-
 class ChartQuotes {
   ChartQuotes({
     this.open,

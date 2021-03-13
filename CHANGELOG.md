@@ -6,3 +6,7 @@
 
 - Updated Documentation
 - Fixed bugs
+
+## [0.0.3] - 13th March, 2021
+
+- Enabled Importing StockInfo and StockHistory class

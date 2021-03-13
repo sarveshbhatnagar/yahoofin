@@ -1,5 +1,3 @@
-import 'package:equatable/equatable.dart';
-
 class YahooApiException implements Exception {
   final int statusCode;
   final String message;

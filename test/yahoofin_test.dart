@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:yahoofin/src/features/history/stock_history.dart';
 import 'package:yahoofin/src/features/information/stock_info.dart';
 import 'package:yahoofin/src/models/stockQuote.dart';
 
