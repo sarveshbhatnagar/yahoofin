@@ -10,3 +10,8 @@
 ## [0.0.3] - 13th March, 2021
 
 - Enabled Importing StockInfo and StockHistory class
+
+## [0.0.4] - 14th March, 2021
+
+- Added Chart History
+- Added checkSymbol

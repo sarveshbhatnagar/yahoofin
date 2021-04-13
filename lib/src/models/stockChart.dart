@@ -1,5 +1,7 @@
 // https://query1.finance.yahoo.com/v8/finance/chart/tsla?interval=1d&range=1mo
 
+import 'package:equatable/equatable.dart';
+
 class ChartQuotes {
   ChartQuotes({
     this.open,
@@ -24,46 +26,31 @@ class ChartQuotes {
       );
 }
 
-class StockChart {
+class StockChart extends Equatable {
   final String ticker;
   final int mode;
   // mode 0 means only chartQuotes is initialized
   // mode 1 means only adjustedClose is initialized
   // mode 2 means both are initialized
 
-  List<num> adjustedClose;
   ChartQuotes chartQuotes;
 
-  StockChart({this.ticker, this.chartQuotes, this.adjustedClose, this.mode});
+  StockChart({this.ticker, this.chartQuotes, this.mode});
 
   // Will take in result.
 
   /// Returns StockChart with chartQuotes filled.
   /// [chartQuotes] contain high, low, open, close and volume.
-  factory StockChart.fromJsonGetChart(Map<String, dynamic> json) {
+  factory StockChart.fromJsonGetChart(
+    Map<String, dynamic> json,
+  ) {
     return StockChart(
-      chartQuotes: ChartQuotes.fromJson(json["indicators"]["quote"]),
+      chartQuotes: ChartQuotes.fromJson(json["indicators"]["quote"][0]),
       mode: 0,
+      ticker: json["meta"]["symbol"],
     );
   }
 
-  /// Returns StockChart with adjustedClose filled.
-  /// [adjustedClose] contains adjustedClose values.
-  factory StockChart.fromJsonGetAdjustedClose(Map<String, dynamic> json) {
-    return StockChart(
-      adjustedClose: json["indicators"]["adjclose"],
-      mode: 1,
-    );
-  }
-
-  /// Initializes both [chartQuotes] and [adjustedClose]
-  /// [chartQuotes] contain open,close,high,low and volume data
-  /// [adjustedClose] contains adjustedClose values.
-  factory StockChart.fromJson(Map<String, dynamic> json) {
-    return StockChart(
-      chartQuotes: ChartQuotes.fromJson(json["indicators"]["quote"]),
-      adjustedClose: json["indicators"]["adjclose"],
-      mode: 2,
-    );
-  }
+  @override
+  List<Object> get props => [mode, ticker];
 }

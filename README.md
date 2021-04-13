@@ -37,4 +37,8 @@ and [regularMarketVolume], [averageDailyVolume3Month], [averageDailyVolume10Day]
 
 ## Getting Stock history
 
-Coming soon. Want to contribute? contact me.
+StockHistory hist = yfin.initStockHistory(ticker: "tsla");
+
+StockChart quotes = yfin.getChartQuotes(stockHistory: hist);
+
+quotes will contain stock history. getChartQuotes method can take parameters : interval of type StockInterval and period of type StockRange.

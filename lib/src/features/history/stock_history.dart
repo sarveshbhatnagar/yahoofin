@@ -6,6 +6,7 @@ import 'package:yahoofin/src/models/stockChart.dart';
 import 'package:http/http.dart' as http;
 import 'package:yahoofin/src/models/yahoo_exception.dart';
 
+/// Enum to specify timeframe of required data
 enum StockRange {
   oneDay,
   fiveDay,
@@ -20,6 +21,7 @@ enum StockRange {
   maxRange,
 }
 
+/// Enum to specify how long a single data point spans
 enum StockInterval {
   oneMinute,
   twoMinute,
@@ -35,6 +37,7 @@ enum StockInterval {
   threeMonth,
 }
 
+/// Module required to access chart functions.
 class StockHistory {
   http.Response res;
   bool _isInitialized = false;
@@ -84,6 +87,8 @@ class StockHistory {
   });
 
   bool _isBodyValid(decoded) {
+    /// Checks if the decoded json is valid. returns [true] if it is
+    /// otherwise returns [false].
     try {
       if (decoded["chart"]["result"] != null) {
         return true;
@@ -95,13 +100,11 @@ class StockHistory {
     }
   }
 
-  Future _init() async {
+  Future _init(params) async {
+    /// Makes an api request to initialize data.
     try {
       final String apiStr = "/v8/finance/chart/$ticker";
-      res = await http.get(Uri.https(
-        baseUrl,
-        apiStr,
-      ));
+      res = await http.get(Uri.https(baseUrl, apiStr, params));
       if (res.statusCode == 200) {
         _isInitialized = true;
       }
@@ -110,14 +113,34 @@ class StockHistory {
     }
   }
 
-  Future<StockChart> getHistory() async {
+  /// Returns a [StockChart] with initialized values based on the request.
+  /// params:
+  /// [interval] - Takes in a [StockInterval] value.
+  /// It specifies span of one tick of data.
+  ///
+  /// [period] - Takes in a [StockRange] value.
+  /// It specifies range of data items.
+  Future<StockChart> getChartQuotes(
+      {StockInterval interval = StockInterval.oneDay,
+      StockRange period = StockRange.oneMonth}) async {
     if (!_isInitialized) {
-      await _init();
+      await _init({
+        "interval": intervalMap[interval],
+        "range": rangeMap[period],
+      });
+    }
+    if (interval != StockInterval.oneDay || period != StockRange.oneMonth) {
+      // If params is changed, calls init again.
+      await _init({
+        "interval": intervalMap[interval],
+        "range": rangeMap[period],
+      });
     }
     final decoded = jsonDecode(res.body);
     if (_isBodyValid(decoded)) {
-      print(decoded["chart"]["result"]);
-      return StockChart(ticker: ticker);
+      // print("HEREEE");
+      // print(decoded["chart"]["result"][0]["indicators"]);
+      return StockChart.fromJsonGetChart(decoded["chart"]["result"][0]);
       // return stockChartFromJson(res.body).chart.result.map((e) => e.indicators);
     } else {
       throw YahooApiException(statusCode: 000, message: "Invalid Body");

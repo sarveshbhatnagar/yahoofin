@@ -7,27 +7,28 @@ export 'src/features/history/stock_history.dart';
 import 'package:flutter/material.dart';
 import 'package:yahoofin/src/features/history/stock_history.dart';
 import 'package:yahoofin/src/features/information/stock_info.dart';
+import 'package:yahoofin/src/features/metadata/stockmetadata.dart';
+import 'package:yahoofin/src/models/stockChart.dart';
 import 'package:yahoofin/src/models/stockQuote.dart';
 
 class YahooFin {
+  /// returns a [StockInfo] instance for given ticker.
+  /// it is required by functions handling basic single day queries.
   StockInfo getStockInfo({@required ticker}) {
-    /// returns a [StockInfo] instance for given ticker.
-    /// it is required by functions handling basic single day queries.
     return StockInfo(ticker: ticker);
   }
 
-  StockHistory getStockHistory({@required ticker}) {
-    /// returns a [StockHistory] instance for given ticker.
-    /// it is required by functions handling basic multiple day queries.
+  /// returns a [StockHistory] instance for given ticker.
+  /// it is required by functions handling basic multiple day queries.
+  StockHistory initStockHistory({@required ticker}) {
     return StockHistory(ticker: ticker);
   }
 
+  /// Returns [StockQuote] instance after getting [currentPrice],
+  /// [dayHigh] and [dayLow] from the given tickers. If invalid ticker
+  ///  is found, returns a [StockQuote] instance with parameters
+  /// initialized to null.
   Future<StockQuote> getPrice({@required StockInfo stockInfo}) async {
-    /// Returns [StockQuote] instance after getting [currentPrice],
-    /// [dayHigh] and [dayLow] from the given tickers. If invalid ticker
-    ///  is found, returns a [StockQuote] instance with parameters
-    /// initialized to null.
-
     try {
       StockQuote stockQuote = await stockInfo.getStockPrice();
       return stockQuote;
@@ -38,16 +39,15 @@ class YahooFin {
     }
   }
 
+  /// Returns [StockQuote] instance after getting price change
+  /// parameters including [regularMarketChange],[fiftyDayAverageChange],
+  /// [fiftyTwoWeekHighChange], [fiftyTwoWeekLowChange],
+  /// [twoHundredDayAverageChange], [fiftyTwoWeekLowChangePercent],
+  /// [fiftyTwoWeekHighChangePercent], [fiftyDayAverageChangePercent],
+  /// [twoHundredDayAverageChangePercent], [regularMarketChangePercent],
+  /// from the given tickers. If invalid ticker is found, returns
+  /// a [StockQuote] instance with parameters initialized to null.
   Future<StockQuote> getPriceChange({@required StockInfo stockInfo}) async {
-    /// Returns [StockQuote] instance after getting price change
-    /// parameters including [regularMarketChange],[fiftyDayAverageChange],
-    /// [fiftyTwoWeekHighChange], [fiftyTwoWeekLowChange],
-    /// [twoHundredDayAverageChange], [fiftyTwoWeekLowChangePercent],
-    /// [fiftyTwoWeekHighChangePercent], [fiftyDayAverageChangePercent],
-    /// [twoHundredDayAverageChangePercent], [regularMarketChangePercent],
-    /// from the given tickers. If invalid ticker is found, returns
-    /// a [StockQuote] instance with parameters initialized to null.
-
     try {
       StockQuote stockQuote = await stockInfo.getStockPriceChange();
       return stockQuote;
@@ -58,12 +58,11 @@ class YahooFin {
     }
   }
 
+  /// Returns [StockQuote] instance after getting [currentPrice],
+  /// [dayHigh] and [dayLow] from the given tickers. If invalid ticker
+  ///  is found, returns a [StockQuote] instance with parameters
+  /// initialized to null.
   Future<StockQuote> getVolume({@required StockInfo stockInfo}) async {
-    /// Returns [StockQuote] instance after getting [currentPrice],
-    /// [dayHigh] and [dayLow] from the given tickers. If invalid ticker
-    ///  is found, returns a [StockQuote] instance with parameters
-    /// initialized to null.
-
     try {
       StockQuote stockQuote = await stockInfo.getStockVolume();
       return stockQuote;
@@ -72,5 +71,27 @@ class YahooFin {
         ticker: stockInfo.ticker,
       );
     }
+  }
+
+  /// Returns stockChart initialized with both [chartQuotes] and
+  /// [adjustedClose] prices.
+  Future<StockChart> getChartQuotes(
+      {@required StockHistory stockHistory,
+      StockInterval interval = StockInterval.oneDay,
+      StockRange period = StockRange.oneMonth}) async {
+    try {
+      StockChart chart = await stockHistory.getChartQuotes(
+        interval: interval,
+        period: period,
+      );
+      return chart;
+    } catch (e) {
+      return StockChart(ticker: stockHistory.ticker);
+    }
+  }
+
+  /// Checks if symbol exists or not.
+  Future<bool> checkSymbol(String symbol) async {
+    return await StockMetaData(ticker: symbol).checkSymbol();
   }
 }

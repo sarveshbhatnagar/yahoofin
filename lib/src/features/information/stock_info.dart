@@ -38,6 +38,7 @@ class StockInfo {
   }
 
   Future<StockQuote> getStockPrice() async {
+    // TODO Doc from here
     if (!_isInitialized) {
       await _init();
     }
