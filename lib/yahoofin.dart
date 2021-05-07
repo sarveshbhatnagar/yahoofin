@@ -14,13 +14,13 @@ import 'package:yahoofin/src/models/stockQuote.dart';
 class YahooFin {
   /// returns a [StockInfo] instance for given ticker.
   /// it is required by functions handling basic single day queries.
-  StockInfo getStockInfo({@required ticker}) {
+  StockInfo getStockInfo({required ticker}) {
     return StockInfo(ticker: ticker);
   }
 
   /// returns a [StockHistory] instance for given ticker.
   /// it is required by functions handling basic multiple day queries.
-  StockHistory initStockHistory({@required ticker}) {
+  StockHistory initStockHistory({required ticker}) {
     return StockHistory(ticker: ticker);
   }
 
@@ -28,7 +28,7 @@ class YahooFin {
   /// [dayHigh] and [dayLow] from the given tickers. If invalid ticker
   ///  is found, returns a [StockQuote] instance with parameters
   /// initialized to null.
-  Future<StockQuote> getPrice({@required StockInfo stockInfo}) async {
+  Future<StockQuote> getPrice({required StockInfo stockInfo}) async {
     try {
       StockQuote stockQuote = await stockInfo.getStockPrice();
       return stockQuote;
@@ -47,7 +47,7 @@ class YahooFin {
   /// [twoHundredDayAverageChangePercent], [regularMarketChangePercent],
   /// from the given tickers. If invalid ticker is found, returns
   /// a [StockQuote] instance with parameters initialized to null.
-  Future<StockQuote> getPriceChange({@required StockInfo stockInfo}) async {
+  Future<StockQuote> getPriceChange({required StockInfo stockInfo}) async {
     try {
       StockQuote stockQuote = await stockInfo.getStockPriceChange();
       return stockQuote;
@@ -62,7 +62,7 @@ class YahooFin {
   /// [dayHigh] and [dayLow] from the given tickers. If invalid ticker
   ///  is found, returns a [StockQuote] instance with parameters
   /// initialized to null.
-  Future<StockQuote> getVolume({@required StockInfo stockInfo}) async {
+  Future<StockQuote> getVolume({required StockInfo stockInfo}) async {
     try {
       StockQuote stockQuote = await stockInfo.getStockVolume();
       return stockQuote;
@@ -76,7 +76,7 @@ class YahooFin {
   /// Returns stockChart initialized with both [chartQuotes] and
   /// [adjustedClose] prices.
   Future<StockChart> getChartQuotes(
-      {@required StockHistory stockHistory,
+      {required StockHistory stockHistory,
       StockInterval interval = StockInterval.oneDay,
       StockRange period = StockRange.oneMonth}) async {
     try {

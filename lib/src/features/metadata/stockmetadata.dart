@@ -5,8 +5,8 @@ import 'package:http/http.dart' as http;
 
 /// Class for interacting with metadata of a stock.
 class StockMetaData {
-  final String ticker;
-  http.Response res;
+  final String? ticker;
+  late http.Response res;
   bool _isInitialized = false;
   final String baseUrl = "query1.finance.yahoo.com";
   final String apiStr = "/v7/finance/quote";
