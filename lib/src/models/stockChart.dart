@@ -33,7 +33,9 @@ class StockChart extends Equatable {
   // mode 1 means only adjustedClose is initialized
   // mode 2 means both are initialized
 
+
   final ChartQuotes? chartQuotes;
+
 
   StockChart({this.ticker, this.chartQuotes, this.mode});
 
