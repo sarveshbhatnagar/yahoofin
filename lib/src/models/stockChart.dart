@@ -11,11 +11,11 @@ class ChartQuotes {
     this.high,
   });
 
-  List<num> open;
-  List<num> low;
-  List<num> close;
-  List<num> volume;
-  List<num> high;
+  List<num>? open;
+  List<num>? low;
+  List<num>? close;
+  List<num>? volume;
+  List<num>? high;
 
   factory ChartQuotes.fromJson(Map<String, dynamic> json) => ChartQuotes(
         open: List<double>.from(json["open"]),
@@ -27,13 +27,15 @@ class ChartQuotes {
 }
 
 class StockChart extends Equatable {
-  final String ticker;
-  final int mode;
+  final String? ticker;
+  final int? mode;
   // mode 0 means only chartQuotes is initialized
   // mode 1 means only adjustedClose is initialized
   // mode 2 means both are initialized
 
-  final ChartQuotes chartQuotes;
+
+  final ChartQuotes? chartQuotes;
+
 
   StockChart({this.ticker, this.chartQuotes, this.mode});
 
@@ -52,5 +54,5 @@ class StockChart extends Equatable {
   }
 
   @override
-  List<Object> get props => [mode, ticker];
+  List<Object?> get props => [mode, ticker];
 }

@@ -5,8 +5,8 @@ import 'package:yahoofin/src/models/stockQuote.dart';
 import 'package:yahoofin/src/models/yahoo_exception.dart';
 
 class StockInfo {
-  final String ticker;
-  http.Response res;
+  final String? ticker;
+  late http.Response res;
   final String baseUrl = "query1.finance.yahoo.com";
   final String apiStr = "/v7/finance/quote";
   // "https://query1.finance.yahoo.com/v7/finance/quote?symbols=";

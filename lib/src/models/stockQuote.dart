@@ -20,36 +20,36 @@ import 'package:equatable/equatable.dart';
 /// for volume variables.
 ///
 class StockQuote extends Equatable {
-  final String ticker;
+  final String? ticker;
 
   // To compare one stock quote with other.
   // mode 0 : price, mode 1 : change, mode 2: volume
   // mode 3 : all
-  final int mode;
+  final int? mode;
 
   // Price variables
-  final double currentPrice;
-  final double dayHigh;
-  final double dayLow;
+  final double? currentPrice;
+  final double? dayHigh;
+  final double? dayLow;
 
   // Change Variables
-  final double regularMarketChange;
-  final double fiftyTwoWeekLowChange;
-  final double fiftyTwoWeekHighChange;
-  final double fiftyDayAverageChange;
-  final double twoHundredDayAverageChange;
+  final double? regularMarketChange;
+  final double? fiftyTwoWeekLowChange;
+  final double? fiftyTwoWeekHighChange;
+  final double? fiftyDayAverageChange;
+  final double? twoHundredDayAverageChange;
 
   // Change percent
-  final double fiftyTwoWeekLowChangePercent;
-  final double fiftyTwoWeekHighChangePercent;
-  final double fiftyDayAverageChangePercent;
-  final double twoHundredDayAverageChangePercent;
-  final double regularMarketChangePercent;
+  final double? fiftyTwoWeekLowChangePercent;
+  final double? fiftyTwoWeekHighChangePercent;
+  final double? fiftyDayAverageChangePercent;
+  final double? twoHundredDayAverageChangePercent;
+  final double? regularMarketChangePercent;
 
   // Volume Variables
-  final int regularMarketVolume;
-  final int averageDailyVolume3Month;
-  final int averageDailyVolume10Day;
+  final int? regularMarketVolume;
+  final int? averageDailyVolume3Month;
+  final int? averageDailyVolume10Day;
 
   StockQuote({
     this.fiftyTwoWeekLowChangePercent,
@@ -135,5 +135,5 @@ class StockQuote extends Equatable {
   }
 
   @override
-  List<Object> get props => [ticker, mode];
+  List<Object?> get props => [ticker, mode];
 }

@@ -39,9 +39,9 @@ enum StockInterval {
 
 /// Module required to access chart functions.
 class StockHistory {
-  http.Response res;
+  late http.Response res;
   bool _isInitialized = false;
-  final String ticker;
+  final String? ticker;
   // final String baseUrl = "https://query1.finance.yahoo.com/v8/finance/chart/";
   final String baseUrl = "query1.finance.yahoo.com";
   final StockInterval interval;
