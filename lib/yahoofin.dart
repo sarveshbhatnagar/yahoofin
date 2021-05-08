@@ -4,7 +4,6 @@ library yahoofin;
 export 'src/features/information/stock_info.dart';
 export 'src/features/history/stock_history.dart';
 
-import 'package:flutter/material.dart';
 import 'package:yahoofin/src/features/history/stock_history.dart';
 import 'package:yahoofin/src/features/information/stock_info.dart';
 import 'package:yahoofin/src/features/metadata/stockmetadata.dart';
