@@ -10,7 +10,9 @@ void main() async {
   StockInfo nullinfo = yfin.getStockInfo(ticker: "null");
   StockInfo info = yfin.getStockInfo(ticker: "cciv");
   StockHistory hist = yfin.initStockHistory(ticker: "tsla");
-
+  // StockChart chart = await hist.getChartQuotes(
+  //     interval: StockInterval.oneDay, period: StockRange.ytd);
+  // print(chart.chartQuotes!.close);
   test("""Checks StockInfo Functions for their validity
    (YahooFin)(note: update test case for testing date)""", () async {
     StockQuote q = await yfin.getPrice(stockInfo: info);
