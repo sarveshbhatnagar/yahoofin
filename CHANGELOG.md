@@ -20,3 +20,7 @@
 
 - Static checks
 - Added Null safety
+
+## [0.0.6] - 8th June, 2021
+
+- Meta Data

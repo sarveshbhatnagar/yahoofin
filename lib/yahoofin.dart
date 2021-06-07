@@ -3,11 +3,13 @@ library yahoofin;
 // Export all the required classes that are required by users.
 export 'src/features/information/stock_info.dart';
 export 'src/features/history/stock_history.dart';
+export 'src/features/metadata/stockmetadata.dart';
 
 import 'package:yahoofin/src/features/history/stock_history.dart';
 import 'package:yahoofin/src/features/information/stock_info.dart';
 import 'package:yahoofin/src/features/metadata/stockmetadata.dart';
 import 'package:yahoofin/src/models/stockChart.dart';
+import 'package:yahoofin/src/models/stockMeta.dart';
 import 'package:yahoofin/src/models/stockQuote.dart';
 
 class YahooFin {
@@ -92,5 +94,9 @@ class YahooFin {
   /// Checks if symbol exists or not.
   Future<bool> checkSymbol(String symbol) async {
     return await StockMetaData(ticker: symbol).checkSymbol();
+  }
+
+  Future<StockMeta> getMetaData(String symbol) async {
+    return await StockMetaData(ticker: symbol).getStockMetaData();
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:yahoofin/src/features/information/stock_info.dart';
 import 'package:yahoofin/src/models/stockChart.dart';
+import 'package:yahoofin/src/models/stockMeta.dart';
 import 'package:yahoofin/src/models/stockQuote.dart';
 
 import 'package:yahoofin/yahoofin.dart';
@@ -62,5 +63,10 @@ void main() async {
   });
   test("Check Symbol exists - false", () async {
     expectLater(yfin.checkSymbol("ndhdhlf"), completion(false));
+  });
+
+  test("Get Meta Data", () async {
+    expectLater(yfin.getMetaData("PLTR"),
+        completion(StockMeta(displayName: "Palantir")));
   });
 }

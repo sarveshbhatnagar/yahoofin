@@ -42,3 +42,8 @@ StockHistory hist = yfin.initStockHistory(ticker: "tsla");
 StockChart quotes = yfin.getChartQuotes(stockHistory: hist);
 
 quotes will contain stock history. getChartQuotes method can take parameters : interval of type StockInterval and period of type StockRange.
+
+## Getting Meta Data
+
+StockMeta meta = await yfin.getMetaData("PLTR");
+bool doesExist = await yfin.checkSymbol("PLTR");

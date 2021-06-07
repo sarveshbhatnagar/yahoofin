@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:yahoofin/src/models/stockMeta.dart';
 import 'package:yahoofin/src/models/yahoo_exception.dart';
 import 'package:http/http.dart' as http;
 
@@ -13,10 +14,8 @@ class StockMetaData {
   StockMetaData({this.ticker});
   bool _isBodyValid(decoded) {
     if (decoded["quoteResponse"]["result"].length != 0) {
-      print("HERE TRUE");
       return true;
     } else {
-      print("HERE FALSE");
       return false;
     }
   }
@@ -48,6 +47,18 @@ class StockMetaData {
       return true;
     } else {
       return false;
+    }
+  }
+
+  Future<StockMeta> getStockMetaData() async {
+    if (!_isInitialized) {
+      await _init();
+    }
+    final decoded = jsonDecode(res.body);
+    if (_isBodyValid(decoded)) {
+      return StockMeta.fromJson(decoded["quoteResponse"]["result"][0]);
+    } else {
+      return StockMeta();
     }
   }
 }
