@@ -23,6 +23,7 @@ based on this info object you can call different methods such as getPrice, getPr
 ```
 StockQuote price = yfin.getPrice(stockInfo: info)
 StockQuote priceChange = yfin.getPriceChange(stockInfo: info)
+
 StockQuote volume = yfin.getVolume(stockInfo: info)
 ```
 

@@ -1,5 +1,9 @@
 import 'package:equatable/equatable.dart';
 
+/// Class for some of the meta data of a stock
+/// params: [shortName], [longName], [displayName],
+/// [regularMarketDayRange], [averageAnalystRating],
+/// [currency],[fiftyTwoWeekRange].
 class StockMeta extends Equatable {
   String? shortName;
   String? longName;

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:yahoofin/src/models/stockMeta.dart';
 
 /// Stock Quote contains several params including
 /// 1. mode that tells what mode it was initialized in
@@ -19,6 +20,9 @@ import 'package:equatable/equatable.dart';
 /// and [regularMarketVolume], [averageDailyVolume3Month], [averageDailyVolume10Day]
 /// for volume variables.
 ///
+/// For every more, there is a parameter named [metaData] that contains
+/// stock metadata such as shortName, longName, displayName, etc. Refer
+/// [StockMeta] class for more info.
 class StockQuote extends Equatable {
   final String? ticker;
 
@@ -51,6 +55,9 @@ class StockQuote extends Equatable {
   final int? averageDailyVolume3Month;
   final int? averageDailyVolume10Day;
 
+  // META
+  final StockMeta? metaData;
+
   StockQuote({
     this.fiftyTwoWeekLowChangePercent,
     this.fiftyTwoWeekHighChangePercent,
@@ -69,6 +76,7 @@ class StockQuote extends Equatable {
     this.currentPrice,
     this.dayHigh,
     this.dayLow,
+    this.metaData,
     this.mode,
   });
 
@@ -78,6 +86,7 @@ class StockQuote extends Equatable {
       currentPrice: json["regularMarketPrice"],
       dayHigh: json["regularMarketDayHigh"],
       dayLow: json["regularMarketDayLow"],
+      metaData: StockMeta.fromJson(json),
       mode: 0,
     );
   }
@@ -96,6 +105,7 @@ class StockQuote extends Equatable {
       twoHundredDayAverageChangePercent:
           json["twoHundredDayAverageChangePercent"],
       regularMarketChangePercent: json["regularMarketChangePercent"],
+      metaData: StockMeta.fromJson(json),
       mode: 1,
     );
   }
@@ -106,6 +116,7 @@ class StockQuote extends Equatable {
       regularMarketVolume: json["regularMarketVolume"],
       averageDailyVolume3Month: json["averageDailyVolume3Month"],
       averageDailyVolume10Day: json["averageDailyVolume10Day"],
+      metaData: StockMeta.fromJson(json),
       mode: 2,
     );
   }
@@ -130,6 +141,7 @@ class StockQuote extends Equatable {
       regularMarketVolume: json["regularMarketVolume"],
       averageDailyVolume3Month: json["averageDailyVolume3Month"],
       averageDailyVolume10Day: json["averageDailyVolume10Day"],
+      metaData: StockMeta.fromJson(json),
       mode: 3,
     );
   }

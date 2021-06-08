@@ -24,3 +24,7 @@
 ## [0.0.6] - 8th June, 2021
 
 - Meta Data
+
+## [0.0.7] - 8th June, 2021
+
+- Added metaData parameter to stock quotes.
