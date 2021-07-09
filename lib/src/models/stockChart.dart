@@ -9,6 +9,7 @@ class ChartQuotes {
     this.close,
     this.volume,
     this.high,
+    this.timestamp,
   });
 
   List<num>? open;
@@ -16,8 +17,10 @@ class ChartQuotes {
   List<num>? close;
   List<num>? volume;
   List<num>? high;
+  List<num>? timestamp;
 
-  factory ChartQuotes.fromJson(Map<String, dynamic> json) => ChartQuotes(
+  factory ChartQuotes.fromJson(dynamic timestamp, Map<String, dynamic> json) => ChartQuotes(
+        timestamp: List<int>.from(timestamp),
         open: List<double>.from(json["open"]),
         low: List<double>.from(json["low"]),
         close: List<double>.from(json["close"]),
@@ -46,8 +49,9 @@ class StockChart extends Equatable {
   factory StockChart.fromJsonGetChart(
     Map<String, dynamic> json,
   ) {
+    //print();
     return StockChart(
-      chartQuotes: ChartQuotes.fromJson(json["indicators"]["quote"][0]),
+      chartQuotes: ChartQuotes.fromJson(json["timestamp"],json["indicators"]["quote"][0]),
       mode: 0,
       ticker: json["meta"]["symbol"],
     );
