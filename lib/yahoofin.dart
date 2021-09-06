@@ -4,6 +4,7 @@ library yahoofin;
 export 'src/features/information/stock_info.dart';
 export 'src/features/history/stock_history.dart';
 export 'src/features/metadata/stockmetadata.dart';
+export 'src/models/stockQuote.dart';
 
 import 'package:yahoofin/src/features/history/stock_history.dart';
 import 'package:yahoofin/src/features/information/stock_info.dart';
