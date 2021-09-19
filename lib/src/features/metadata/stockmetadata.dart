@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:yahoofin/src/models/stockMeta.dart';
+import 'package:yahoofin/src/models/stock_meta.dart';
 import 'package:yahoofin/src/models/yahoo_exception.dart';
 import 'package:http/http.dart' as http;
 

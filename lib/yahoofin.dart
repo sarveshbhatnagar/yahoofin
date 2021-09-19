@@ -4,13 +4,17 @@ library yahoofin;
 export 'src/features/information/stock_info.dart';
 export 'src/features/history/stock_history.dart';
 export 'src/features/metadata/stockmetadata.dart';
+export 'src/models/stock_chart.dart';
+export 'src/models/stock_meta.dart';
+export 'src/models/stock_quote.dart';
+export 'src/models/yahoo_exception.dart';
 
 import 'package:yahoofin/src/features/history/stock_history.dart';
 import 'package:yahoofin/src/features/information/stock_info.dart';
 import 'package:yahoofin/src/features/metadata/stockmetadata.dart';
-import 'package:yahoofin/src/models/stockChart.dart';
-import 'package:yahoofin/src/models/stockMeta.dart';
-import 'package:yahoofin/src/models/stockQuote.dart';
+import 'package:yahoofin/src/models/stock_chart.dart';
+import 'package:yahoofin/src/models/stock_meta.dart';
+import 'package:yahoofin/src/models/stock_quote.dart';
 
 class YahooFin {
   /// returns a [StockInfo] instance for given ticker.

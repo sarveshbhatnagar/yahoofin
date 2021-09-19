@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:yahoofin/src/models/stockMeta.dart';
+import 'package:yahoofin/src/models/stock_meta.dart';
 
 /// Stock Quote contains several params including
 /// 1. mode that tells what mode it was initialized in

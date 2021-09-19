@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:yahoofin/src/features/information/stock_info.dart';
-import 'package:yahoofin/src/models/stockChart.dart';
-import 'package:yahoofin/src/models/stockMeta.dart';
-import 'package:yahoofin/src/models/stockQuote.dart';
+import 'package:yahoofin/src/models/stock_chart.dart';
+import 'package:yahoofin/src/models/stock_meta.dart';
+import 'package:yahoofin/src/models/stock_quote.dart';
 
 import 'package:yahoofin/yahoofin.dart';
 
