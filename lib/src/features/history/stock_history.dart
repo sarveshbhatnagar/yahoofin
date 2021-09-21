@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 
-import 'package:yahoofin/src/models/stockChart.dart';
+import 'package:yahoofin/src/models/stock_chart.dart';
 import 'package:http/http.dart' as http;
 import 'package:yahoofin/src/models/yahoo_exception.dart';
 

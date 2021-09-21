@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:yahoofin/src/models/stockQuote.dart';
+import 'package:yahoofin/src/models/stock_quote.dart';
 import 'package:yahoofin/src/models/yahoo_exception.dart';
 
 class StockInfo {
