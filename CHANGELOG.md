@@ -28,3 +28,8 @@
 ## [0.0.7] - 8th June, 2021
 
 - Added metaData parameter to stock quotes.
+
+## [0.0.8] - 20th September, 2021
+
+- Added quoteType, exchange info
+- minor bug fixes
